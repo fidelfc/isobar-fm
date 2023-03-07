@@ -17,7 +17,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path={'/'}>
       <Route index element={<SearchView />} />
-      <Route path={'/band/:id'} element={<BandView />} />
+      <Route path={'/band/:bandId'} element={<BandView />} />
     </Route>
   )
 );
