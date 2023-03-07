@@ -9,8 +9,10 @@ interface Props {
 export const Album = ({ name, image, numberOfTracks }: Props) => {
   return (
     <Container $background={image}>
-      <div>{name}</div>
-      <div>{numberOfTracks} Tracks</div>
+      <InfoWrapper>
+        <p>{name}</p>
+        <p>{numberOfTracks} Tracks</p>
+      </InfoWrapper>
     </Container>
   );
 };
@@ -28,5 +30,12 @@ const Container = styled.div<ContainerProps>`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
+`;
+
+const InfoWrapper = styled.div`
   padding: 8px;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  width: 100%;
+  font-size: 1rem;
 `;

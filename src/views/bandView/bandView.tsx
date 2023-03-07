@@ -46,7 +46,7 @@ export const BandView = () => {
             </BandInfo>
             <DescriptionWrapper>
               <Description $expanded={expandDescription}>
-                {bandRes?.biography}
+                <DescriptionText>{bandRes?.biography}</DescriptionText>
               </Description>
               <img
                 onClick={toggleExpanded}
@@ -176,4 +176,9 @@ const NavBarLayout = styled.div`
 
 const BackImg = styled.img`
   height: 24px;
+`;
+
+const DescriptionText = styled.p`
+  font-size: 1.4rem;
+  color: black;
 `;
