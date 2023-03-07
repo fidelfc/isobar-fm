@@ -12,7 +12,7 @@ export const BandListItem = ({ bandName, imageUrl, numberOfPlays }: Props) => {
       <BandImage src={imageUrl} />
       <BandInfo>
         <BandName>{bandName}</BandName>
-        <BandNumberOfPlays>{numberOfPlays}</BandNumberOfPlays>
+        <BandNumberOfPlays>{numberOfPlays} Plays</BandNumberOfPlays>
       </BandInfo>
     </Container>
   );
