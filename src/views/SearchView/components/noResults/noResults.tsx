@@ -20,7 +20,7 @@ const Container = styled.div`
 `;
 const Title = styled.h3`
   color: gray;
-  font-size: 22px;
+  font-size: 2.2rem;
   margin-bottom: 12px;
 `;
 const Image = styled.img`

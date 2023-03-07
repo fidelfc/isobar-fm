@@ -17,6 +17,10 @@ const GlobalStyle = createGlobalStyle`
   *{
     box-sizing: border-box;
   }
+  
+  html{
+    font-size: 10px;
+  }
 `;
 const queryClient = new QueryClient();
 const router = createBrowserRouter(

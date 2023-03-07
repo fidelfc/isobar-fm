@@ -6,9 +6,9 @@ import { Album } from './components/album/Album';
 import { useViewController } from './BandViewController';
 import { Loader } from '../../components/loader/loader';
 import { NavBar } from '../../components/navBar/navBar';
-import IsobarLogo from '../../assets/logo.png';
 import BackButton from '../../assets/back.png';
 import { Link } from 'react-router-dom';
+import { Logo } from '../../components/logo/Logo';
 
 export const BandView = () => {
   const { bandAlbums, isLoading, bandRes, toggleExpanded, expandDescription } =
@@ -34,7 +34,7 @@ export const BandView = () => {
               <Link to={'/'}>
                 <BackImg src={BackButton} alt={'back-button'} />
               </Link>
-              <LogoImg src={IsobarLogo} alt={'isobar-logo'} />
+              <Logo />
             </NavBarLayout>
           </NavBar>
           <Background $background={bandRes?.image} />
@@ -92,7 +92,8 @@ const BandInfo = styled.div`
 
 const Info = styled.h4`
   color: darkgray;
-  font-size: 14px;
+  font-size: 1.4rem;
+  text-transform: uppercase;
 `;
 
 const BandImage = styled.img`
@@ -148,7 +149,7 @@ const AlbumContainer = styled.div`
 `;
 
 const Title = styled.h3`
-  font-size: 16px;
+  font-size: 1.6rem;
   color: black;
   font-weight: bold;
   margin: 24px 0;
@@ -175,8 +176,4 @@ const NavBarLayout = styled.div`
 
 const BackImg = styled.img`
   height: 24px;
-`;
-
-const LogoImg = styled.img`
-  width: 75px;
 `;

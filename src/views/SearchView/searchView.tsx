@@ -7,7 +7,7 @@ import { useViewController } from './searchViewController';
 import { NoResults } from './components/noResults/noResults';
 import { Loader } from '../../components/loader/loader';
 import { NavBar } from '../../components/navBar/navBar';
-import IsobarLogo from '../../assets/logo.png';
+import { Logo } from '../../components/logo/Logo';
 
 export const SearchView = () => {
   const {
@@ -41,7 +41,7 @@ export const SearchView = () => {
                 changeFunction={changeValue}
                 value={searchValue}
               />
-              <LogoImg src={IsobarLogo} alt={'isobar-logo'} />
+              <Logo />
             </NavBarLayout>
           </NavBar>
           <ListView>{hasResults ? bandList : <NoResults />}</ListView>
@@ -75,8 +75,4 @@ const NavBarLayout = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-`;
-
-const LogoImg = styled.img`
-  width: 75px;
 `;

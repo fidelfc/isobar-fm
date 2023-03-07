@@ -46,13 +46,13 @@ const BandInfo = styled.div`
 const BandName = styled.p`
   color: black;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 1.6rem;
   margin: 0 0 8px 0;
 `;
 
 const BandNumberOfPlays = styled.p`
   color: gray;
-  font-size: 11px;
+  font-size: 1.2rem;
   margin: 0;
   font-weight: lighter;
 `;
