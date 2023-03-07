@@ -1,13 +1,23 @@
 import React from 'react';
-import { BandListItem } from './components/bandListItem';
+import { BandListItem } from './components/bandListItem/bandListItem';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Search } from './components/search';
+import { SearchInput } from './components/searchBar/searchInput';
 import { useViewController } from './searchViewController';
+import { NoResults } from './components/noResults/noResults';
+import { Loader } from '../../components/loader/loader';
+import { NavBar } from '../../components/navBar/navBar';
+import IsobarLogo from '../../assets/logo.png';
 
 export const SearchView = () => {
-  const { searchValue, changeValue, bands, filterBands, isLoading } =
-    useViewController();
+  const {
+    searchValue,
+    changeValue,
+    bands,
+    filterBands,
+    isLoading,
+    hasResults
+  } = useViewController();
   const bandList = bands.map((band) => (
     <StyledLink key={band.id} to={`band/${band.id}`}>
       <BandListItem
@@ -20,12 +30,23 @@ export const SearchView = () => {
 
   return (
     <div>
-      <Search
-        searchFunction={filterBands}
-        changeFunction={changeValue}
-        value={searchValue}
-      />
-      <ListView>{bandList}</ListView>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <NavBar>
+            <NavBarLayout>
+              <SearchInput
+                searchFunction={filterBands}
+                changeFunction={changeValue}
+                value={searchValue}
+              />
+              <LogoImg src={IsobarLogo} alt={'isobar-logo'} />
+            </NavBarLayout>
+          </NavBar>
+          <ListView>{hasResults ? bandList : <NoResults />}</ListView>
+        </>
+      )}
     </div>
   );
 };
@@ -34,6 +55,7 @@ const ListView = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  padding: 0 18px;
 `;
 
 const StyledLink = styled(Link)`
@@ -46,4 +68,15 @@ const StyledLink = styled(Link)`
   &:active {
     text-decoration: none;
   }
+`;
+
+const NavBarLayout = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const LogoImg = styled.img`
+  width: 75px;
 `;

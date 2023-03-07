@@ -2,18 +2,17 @@ import React from 'react';
 import styled from 'styled-components';
 import PlusIcon from '../../assets/add.png';
 import MinusIcon from '../../assets/minus.png';
-import { Album } from './components/Album';
+import { Album } from './components/album/Album';
 import { useViewController } from './BandViewController';
+import { Loader } from '../../components/loader/loader';
+import { NavBar } from '../../components/navBar/navBar';
+import IsobarLogo from '../../assets/logo.png';
+import BackButton from '../../assets/back.png';
+import { Link } from 'react-router-dom';
 
 export const BandView = () => {
-  const {
-    bandAlbums,
-    bandLoading,
-    albumLoading,
-    bandRes,
-    toggleExpanded,
-    expandDescription
-  } = useViewController();
+  const { bandAlbums, isLoading, bandRes, toggleExpanded, expandDescription } =
+    useViewController();
 
   const AlbumList = bandAlbums.map((album) => (
     <Album
@@ -25,28 +24,42 @@ export const BandView = () => {
   ));
 
   return (
-    <>
-      <Background $background={bandRes?.image} />
-      <Layout>
-        <BandInfo>
-          <Info>{bandRes?.genre}</Info>
-          <BandImage src={bandRes?.image} />
-          <Info>{bandRes?.numPlays} Plays</Info>
-        </BandInfo>
-        <DescriptionWrapper>
-          <Description $expanded={expandDescription}>
-            {bandRes?.biography}
-          </Description>
-          <img
-            onClick={toggleExpanded}
-            src={expandDescription ? MinusIcon : PlusIcon}
-            alt={expandDescription ? 'minus-icon' : 'plus-icon'}
-          />
-        </DescriptionWrapper>
-        <Title>Albums</Title>
-        <AlbumContainer>{AlbumList}</AlbumContainer>
-      </Layout>
-    </>
+    <FullWidthColumn>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <NavBar>
+            <NavBarLayout>
+              <Link to={'/'}>
+                <BackImg src={BackButton} alt={'back-button'} />
+              </Link>
+              <LogoImg src={IsobarLogo} alt={'isobar-logo'} />
+            </NavBarLayout>
+          </NavBar>
+          <Background $background={bandRes?.image} />
+          <Layout>
+            <BandInfo>
+              <Info>{bandRes?.genre}</Info>
+              <BandImage src={bandRes?.image} />
+              <Info>{bandRes?.numPlays} Plays</Info>
+            </BandInfo>
+            <DescriptionWrapper>
+              <Description $expanded={expandDescription}>
+                {bandRes?.biography}
+              </Description>
+              <img
+                onClick={toggleExpanded}
+                src={expandDescription ? MinusIcon : PlusIcon}
+                alt={expandDescription ? 'minus-icon' : 'plus-icon'}
+              />
+            </DescriptionWrapper>
+            <Title>Albums</Title>
+            <AlbumContainer>{AlbumList}</AlbumContainer>
+          </Layout>
+        </>
+      )}
+    </FullWidthColumn>
   );
 };
 
@@ -142,4 +155,28 @@ const Title = styled.h3`
   width: 100%;
   text-align: center;
   text-transform: uppercase;
+`;
+
+const FullWidthColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-bottom: 32px;
+`;
+
+const NavBarLayout = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+const BackImg = styled.img`
+  height: 24px;
+`;
+
+const LogoImg = styled.img`
+  width: 75px;
 `;

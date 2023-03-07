@@ -11,7 +11,13 @@ import {
 import { SearchView } from './views/SearchView/searchView';
 import { Reset } from 'styled-reset';
 import { BandView } from './views/bandView/bandView';
+import { createGlobalStyle } from 'styled-components';
 
+const GlobalStyle = createGlobalStyle`
+  *{
+    box-sizing: border-box;
+  }
+`;
 const queryClient = new QueryClient();
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +30,7 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Reset />
+    <GlobalStyle />
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
     </QueryClientProvider>

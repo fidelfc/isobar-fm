@@ -25,6 +25,7 @@ export const useViewController = () => {
   const toggleExpanded = () => {
     setExpandedDescription((prevState) => !prevState);
   };
+
   useEffect(() => {
     if (bandRes && albumRes) {
       const filteredAlbums = getBandAlbums(bandRes.albums, albumRes);
@@ -32,10 +33,11 @@ export const useViewController = () => {
     }
   }, [bandRes, albumRes]);
 
+  const isLoading = albumLoading || bandLoading;
+
   return {
-    albumLoading,
+    isLoading,
     bandAlbums,
-    bandLoading,
     bandRes,
     toggleExpanded,
     expandDescription

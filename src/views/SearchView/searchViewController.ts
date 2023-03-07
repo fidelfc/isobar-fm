@@ -13,6 +13,7 @@ export const useViewController = () => {
 
   const [searchValue, setSearchValue] = useState<string>('');
   const [bands, setBands] = useState<BandHTTPResponse[]>([]);
+  const [hasResults, setHasResults] = useState<boolean>(false);
 
   const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
@@ -37,6 +38,18 @@ export const useViewController = () => {
       setBands(bandListRes);
     }
   }, [bandListRes]);
+  useEffect(() => {
+    if (!isLoading) {
+      setHasResults(!!bands.length);
+    }
+  }, [bands]);
 
-  return { changeValue, searchValue, bands, isLoading, filterBands };
+  return {
+    changeValue,
+    searchValue,
+    bands,
+    isLoading,
+    filterBands,
+    hasResults
+  };
 };
