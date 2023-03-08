@@ -185,7 +185,7 @@ const AlbumContainer = styled.div`
   grid-template-columns: repeat(auto-fit, 100px);
   grid-template-rows: auto;
   grid-auto-rows: auto;
-  justify-content: center;
+  justify-content: left;
   justify-items: center;
 
   @media (min-width: ${Devices.desktop}) {
