@@ -2,6 +2,7 @@ import React, { FormEvent } from 'react';
 import styled from 'styled-components';
 import search from '../../../../assets/search.png';
 import { Colors } from '../../../../constants/colors';
+import { Devices } from '../../../../constants/devices';
 interface Props {
   changeFunction: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
@@ -47,6 +48,11 @@ const Input = styled.input`
   box-shadow: none;
   border: 1px ${Colors.white} solid;
   border-radius: 4px;
+
+  @media (min-width: ${Devices.desktop}) {
+    width: 400px;
+    margin-left: auto;
+  }
 `;
 
 const Icon = styled.img`

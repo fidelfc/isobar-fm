@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../../../constants/colors';
+import { Devices } from '../../../../constants/devices';
 
 interface Props {
   imageUrl: string;
@@ -32,9 +33,14 @@ const Container = styled.div`
   height: 90px;
   align-items: center;
   background-color: ${Colors.white};
+  padding: 12px 12px;
 
   &:hover {
     background-color: ${Colors.lightGray};
+  }
+
+  @media (min-width: ${Devices.desktop}) {
+    padding: 12px 36px;
   }
 `;
 
@@ -49,6 +55,9 @@ const BandName = styled.p`
   font-weight: bold;
   font-size: 1.6rem;
   margin: 0 0 8px 0;
+  @media (min-width: ${Devices.desktop}) {
+    font-size: 2.4rem;
+  }
 `;
 
 const BandNumberOfPlays = styled.p`
@@ -56,4 +65,8 @@ const BandNumberOfPlays = styled.p`
   font-size: 1.2rem;
   margin: 0;
   font-weight: lighter;
+
+  @media (min-width: ${Devices.desktop}) {
+    font-size: 1.6rem;
+  }
 `;

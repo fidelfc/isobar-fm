@@ -8,6 +8,7 @@ import { NoResults } from './components/noResults/noResults';
 import { Loader } from '../../components/loader/loader';
 import { NavBar } from '../../components/navBar/navBar';
 import { Logo } from '../../components/logo/Logo';
+import { Devices } from '../../constants/devices';
 
 export const SearchView = () => {
   const {
@@ -58,6 +59,9 @@ const ListView = styled.div`
   flex-direction: column;
   gap: 8px;
   padding: 0 18px;
+  @media (min-width: ${Devices.desktop}) {
+    padding: 0 24px;
+  }
 `;
 
 const StyledLink = styled(Link)`

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../constants/colors';
+import { Devices } from '../../constants/devices';
 
 type Props = {
   children?: React.ReactNode;
@@ -18,4 +19,8 @@ const Container = styled.div`
   padding: 12px 24px;
   position: sticky;
   top: 0;
+
+  @media (min-width: ${Devices.desktop}) {
+    padding: 12px 36px;
+  }
 `;

@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import React from 'react';
+import { Devices } from '../../constants/devices';
 
 export const Loader = () => {
   return (
@@ -27,6 +28,11 @@ const Spinner = styled.div`
   border-radius: 50%;
   display: inline-block;
   box-sizing: border-box;
+
+  @media (min-width: ${Devices.desktop}) {
+    width: 64px;
+    height: 64px;
+  }
 `;
 
 const CenteredLoader = styled.div`

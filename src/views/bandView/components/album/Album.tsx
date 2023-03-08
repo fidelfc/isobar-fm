@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Colors } from '../../../../constants/colors';
+import { Devices } from '../../../../constants/devices';
 
 interface Props {
   name: string;
@@ -31,6 +32,10 @@ const Container = styled.div<ContainerProps>`
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
+  @media (min-width: ${Devices.desktop}) {
+    width: 250px;
+    height: 250px;
+  }
 `;
 
 const InfoWrapper = styled.div`

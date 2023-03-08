@@ -10,6 +10,7 @@ import BackButton from '../../assets/back.png';
 import { Link } from 'react-router-dom';
 import { Logo } from '../../components/logo/Logo';
 import { Colors } from '../../constants/colors';
+import { Devices } from '../../constants/devices';
 
 export const BandView = () => {
   const { bandAlbums, isLoading, bandRes, toggleExpanded, expandDescription } =
@@ -81,6 +82,11 @@ const Layout = styled.div`
   flex-direction: column;
   position: relative;
   padding: 0 18px;
+
+  @media (min-width: ${Devices.desktop}) {
+    max-width: 800px;
+    margin: 0 auto;
+  }
 `;
 
 const BandInfo = styled.div`
@@ -91,6 +97,11 @@ const BandInfo = styled.div`
   width: 100%;
   transform: translateY(-35px);
   position: relative;
+
+  @media (min-width: ${Devices.desktop}) {
+    max-width: 500px;
+    margin: 0 auto;
+  }
 `;
 
 const BandTitle = styled.h2`
@@ -105,6 +116,9 @@ const Info = styled.h4`
   color: ${Colors.darkGray};
   font-size: 1.2rem;
   text-transform: uppercase;
+  @media (min-width: ${Devices.desktop}) {
+    font-size: 1.6rem;
+  }
 `;
 
 const BandImage = styled.img`
@@ -112,6 +126,11 @@ const BandImage = styled.img`
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
+
+  @media (min-width: ${Devices.desktop}) {
+    height: 170px;
+    width: 170px;
+  }
 `;
 
 interface DescriptionProps {
@@ -127,6 +146,10 @@ const DescriptionWrapper = styled.div`
     width: 15px;
     height: 15px;
     transform: translateX(-50%);
+
+    @media (min-width: ${Devices.desktop}) {
+      display: none;
+    }
   }
 `;
 const Description = styled.div<DescriptionProps>`
@@ -134,6 +157,9 @@ const Description = styled.div<DescriptionProps>`
   overflow: hidden;
   width: 100%;
   position: relative;
+  @media (min-width: ${Devices.desktop}) {
+    max-height: 100%;
+  }
 
   :after {
     content: '';
@@ -147,6 +173,10 @@ const Description = styled.div<DescriptionProps>`
         ? 'unset'
         : ' linear-gradient(180deg, rgba(139,167,32,0) 0%, rgba(255,255,255,1) 100%);'};
     pointer-events: none;
+
+    @media (min-width: ${Devices.desktop}) {
+      display: none;
+    }
   }
 `;
 
@@ -157,6 +187,10 @@ const AlbumContainer = styled.div`
   grid-auto-rows: auto;
   justify-content: center;
   justify-items: center;
+
+  @media (min-width: ${Devices.desktop}) {
+    grid-template-columns: repeat(auto-fit, 250px);
+  }
 `;
 
 const Title = styled.h3`
