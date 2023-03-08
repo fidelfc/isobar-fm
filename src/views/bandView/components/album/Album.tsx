@@ -8,7 +8,7 @@ interface Props {
 }
 export const Album = ({ name, image, numberOfTracks }: Props) => {
   return (
-    <Container $background={image}>
+    <Container data-testid={'album'} $background={image}>
       <InfoWrapper>
         <p>{name}</p>
         <p>{numberOfTracks} Tracks</p>

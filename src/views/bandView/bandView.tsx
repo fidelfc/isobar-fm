@@ -92,7 +92,7 @@ const BandInfo = styled.div`
 
 const Info = styled.h4`
   color: darkgray;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   text-transform: uppercase;
 `;
 

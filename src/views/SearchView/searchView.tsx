@@ -18,15 +18,17 @@ export const SearchView = () => {
     isLoading,
     hasResults
   } = useViewController();
-  const bandList = bands.map((band) => (
-    <StyledLink key={band.id} to={`band/${band.id}`}>
-      <BandListItem
-        imageUrl={band.image}
-        bandName={band.name}
-        numberOfPlays={band.numPlays}
-      />
-    </StyledLink>
-  ));
+  const bandList =
+    bands.length &&
+    bands.map((band) => (
+      <StyledLink key={band.id} to={`band/${band.id}`}>
+        <BandListItem
+          imageUrl={band.image}
+          bandName={band.name}
+          numberOfPlays={band.numPlays}
+        />
+      </StyledLink>
+    ));
 
   return (
     <div>

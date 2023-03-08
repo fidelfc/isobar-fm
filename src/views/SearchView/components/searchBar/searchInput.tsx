@@ -17,8 +17,13 @@ export const SearchInput = ({
   };
   return (
     <InputWrapper onSubmit={handleSubmit}>
-      <Input onChange={changeFunction} value={value} />
+      <Input
+        data-testid={'search-input'}
+        onChange={changeFunction}
+        value={value}
+      />
       <Icon
+        data-testid={'search-button'}
         onClick={() => searchFunction(value)}
         src={search}
         alt={'search-icon'}
@@ -33,7 +38,7 @@ const InputWrapper = styled.form`
   height: 24px;
 `;
 const Input = styled.input`
-  width: 250px;
+  width: 200px;
   padding-right: 32px;
   padding-left: 12px;
   height: 100%;

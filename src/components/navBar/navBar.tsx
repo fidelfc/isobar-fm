@@ -5,7 +5,7 @@ type Props = {
   children?: React.ReactNode;
 };
 export const NavBar = ({ children }: Props) => {
-  return <Container>{children}</Container>;
+  return <Container data-testid={'navbar'}>{children}</Container>;
 };
 
 const Container = styled.div`
