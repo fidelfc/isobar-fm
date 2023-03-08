@@ -16,6 +16,15 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyle = createGlobalStyle`
   *{
     box-sizing: border-box;
+    font-family: Roboto,sans-serif;
+  }
+  
+  p,
+  h1,
+  h2,
+  h3,
+  h4{
+    font-family: Roboto,sans-serif;
   }
   
   html{

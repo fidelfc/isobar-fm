@@ -40,6 +40,7 @@ export const BandView = () => {
           <Background $background={bandRes?.image} />
           <Layout>
             <BandInfo>
+              <BandTitle>{bandRes?.name}</BandTitle>
               <Info>{bandRes?.genre}</Info>
               <BandImage src={bandRes?.image} />
               <Info>{bandRes?.numPlays} Plays</Info>
@@ -88,6 +89,15 @@ const BandInfo = styled.div`
   grid-template-columns: 30% 40% 30%;
   width: 100%;
   transform: translateY(-35px);
+  position: relative;
+`;
+
+const BandTitle = styled.h2`
+  color: black;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  position: absolute;
+  top: -30px;
 `;
 
 const Info = styled.h4`
