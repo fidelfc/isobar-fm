@@ -1,6 +1,7 @@
 import React, { FormEvent } from 'react';
 import styled from 'styled-components';
 import search from '../../../../assets/search.png';
+import { Colors } from '../../../../constants/colors';
 interface Props {
   changeFunction: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
@@ -44,7 +45,7 @@ const Input = styled.input`
   height: 100%;
   outline: none;
   box-shadow: none;
-  border: 1px white solid;
+  border: 1px ${Colors.white} solid;
   border-radius: 4px;
 `;
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Colors } from '../../../../constants/colors';
 
 interface Props {
   name: string;
@@ -35,7 +36,7 @@ const Container = styled.div<ContainerProps>`
 const InfoWrapper = styled.div`
   padding: 8px;
   background-color: rgba(0, 0, 0, 0.75);
-  color: white;
+  color: ${Colors.white};
   width: 100%;
   font-size: 1rem;
 `;

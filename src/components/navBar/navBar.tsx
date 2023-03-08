@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Colors } from '../../constants/colors';
 
 type Props = {
   children?: React.ReactNode;
@@ -9,7 +10,7 @@ export const NavBar = ({ children }: Props) => {
 };
 
 const Container = styled.div`
-  background-color: orangered;
+  background-color: ${Colors.orange};
   display: flex;
   align-items: center;
   height: 70px;

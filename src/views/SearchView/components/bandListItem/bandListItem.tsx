@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Colors } from '../../../../constants/colors';
 
 interface Props {
   imageUrl: string;
@@ -30,10 +31,10 @@ const Container = styled.div`
   width: 100%;
   height: 90px;
   align-items: center;
-  background-color: white;
+  background-color: ${Colors.white};
 
   &:hover {
-    background-color: lightgray;
+    background-color: ${Colors.lightGray};
   }
 `;
 
@@ -44,14 +45,14 @@ const BandInfo = styled.div`
 `;
 
 const BandName = styled.p`
-  color: black;
+  color: ${Colors.black};
   font-weight: bold;
   font-size: 1.6rem;
   margin: 0 0 8px 0;
 `;
 
 const BandNumberOfPlays = styled.p`
-  color: gray;
+  color: ${Colors.black};
   font-size: 1.2rem;
   margin: 0;
   font-weight: lighter;

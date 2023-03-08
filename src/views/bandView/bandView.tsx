@@ -9,6 +9,7 @@ import { NavBar } from '../../components/navBar/navBar';
 import BackButton from '../../assets/back.png';
 import { Link } from 'react-router-dom';
 import { Logo } from '../../components/logo/Logo';
+import { Colors } from '../../constants/colors';
 
 export const BandView = () => {
   const { bandAlbums, isLoading, bandRes, toggleExpanded, expandDescription } =
@@ -93,7 +94,7 @@ const BandInfo = styled.div`
 `;
 
 const BandTitle = styled.h2`
-  color: black;
+  color: ${Colors.black};
   font-size: 1.8rem;
   text-transform: uppercase;
   position: absolute;
@@ -101,7 +102,7 @@ const BandTitle = styled.h2`
 `;
 
 const Info = styled.h4`
-  color: darkgray;
+  color: ${Colors.darkGray};
   font-size: 1.2rem;
   text-transform: uppercase;
 `;

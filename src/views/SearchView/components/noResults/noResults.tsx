@@ -1,6 +1,7 @@
 import React from 'react';
 import noResultsImage from '../../../../assets/no_results.png';
 import styled from 'styled-components';
+import { Colors } from '../../../../constants/colors';
 export const NoResults = () => {
   return (
     <Container>
@@ -19,7 +20,7 @@ const Container = styled.div`
   height: 300px;
 `;
 const Title = styled.h3`
-  color: gray;
+  color: ${Colors.darkGray};
   font-size: 2.2rem;
   margin-bottom: 12px;
 `;
