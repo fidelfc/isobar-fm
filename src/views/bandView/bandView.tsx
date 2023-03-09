@@ -195,7 +195,7 @@ const AlbumContainer = styled.div`
 
 const Title = styled.h3`
   font-size: 1.6rem;
-  color: black;
+  color: ${Colors.black};
   font-weight: bold;
   margin: 24px 0;
   width: 100%;
@@ -225,5 +225,5 @@ const BackImg = styled.img`
 
 const DescriptionText = styled.p`
   font-size: 1.4rem;
-  color: black;
+  color: ${Colors.black};
 `;

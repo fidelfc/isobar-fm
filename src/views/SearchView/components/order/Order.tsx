@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import OrderIcon from '../../../../assets/order_by.png';
 import styled from 'styled-components';
 import { Colors } from '../../../../constants/colors';
