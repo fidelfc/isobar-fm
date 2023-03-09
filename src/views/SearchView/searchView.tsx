@@ -3,25 +3,32 @@ import { BandListItem } from './components/bandListItem/bandListItem';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { SearchInput } from './components/searchBar/searchInput';
-import { useViewController } from './searchViewController';
+import {
+  useFilterData,
+  useSortableData,
+  useViewController
+} from './searchViewController';
 import { NoResults } from './components/noResults/noResults';
 import { Loader } from '../../components/loader/loader';
 import { NavBar } from '../../components/navBar/navBar';
 import { Logo } from '../../components/logo/Logo';
 import { Devices } from '../../constants/devices';
+import { Order } from './components/order/Order';
 
 export const SearchView = () => {
+  const { bands, isLoading } = useViewController();
+
+  const { items: sortedItems, requestSort } = useSortableData(bands);
   const {
-    searchValue,
-    changeValue,
-    bands,
-    filterBands,
-    isLoading,
-    hasResults
-  } = useViewController();
+    items: filteredItems,
+    filter,
+    requestFilter,
+    handleFilter
+  } = useFilterData(sortedItems);
+
   const bandList =
-    bands.length &&
-    bands.map((band) => (
+    filteredItems.length &&
+    filteredItems.map((band) => (
       <StyledLink key={band.id} to={`band/${band.id}`}>
         <BandListItem
           imageUrl={band.image}
@@ -30,7 +37,6 @@ export const SearchView = () => {
         />
       </StyledLink>
     ));
-
   return (
     <div>
       {isLoading ? (
@@ -40,14 +46,19 @@ export const SearchView = () => {
           <NavBar>
             <NavBarLayout>
               <SearchInput
-                searchFunction={filterBands}
-                changeFunction={changeValue}
-                value={searchValue}
+                searchFunction={handleFilter}
+                changeFunction={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  requestFilter(e.target.value)
+                }
+                value={filter || ''}
               />
               <Logo />
             </NavBarLayout>
           </NavBar>
-          <ListView>{hasResults ? bandList : <NoResults />}</ListView>
+          <ListView>
+            <Order orderFunction={requestSort} />
+            {!!filteredItems.length ? bandList : <NoResults />}
+          </ListView>
         </>
       )}
     </div>
@@ -56,6 +67,7 @@ export const SearchView = () => {
 
 const ListView = styled.div`
   display: flex;
+  position: relative;
   flex-direction: column;
   gap: 8px;
   padding: 0 18px;

@@ -6,7 +6,7 @@ import { Devices } from '../../../../constants/devices';
 interface Props {
   changeFunction: (e: React.ChangeEvent<HTMLInputElement>) => void;
   value: string;
-  searchFunction: (value: string) => void;
+  searchFunction: () => void;
 }
 export const SearchInput = ({
   changeFunction,
@@ -15,7 +15,7 @@ export const SearchInput = ({
 }: Props) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    searchFunction(value);
+    searchFunction();
   };
   return (
     <InputWrapper onSubmit={handleSubmit}>
@@ -26,7 +26,7 @@ export const SearchInput = ({
       />
       <Icon
         data-testid={'search-button'}
-        onClick={() => searchFunction(value)}
+        onClick={() => searchFunction()}
         src={search}
         alt={'search-icon'}
       />
