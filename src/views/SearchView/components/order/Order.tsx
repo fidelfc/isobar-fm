@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import OrderIcon from '../../../../assets/order_by.png';
 import styled from 'styled-components';
 import { Colors } from '../../../../constants/colors';
-import { OrderTypes } from '../../searchViewController';
 import { BandHTTPResponse } from '../../../../services/model/bandHTTPResponse';
 
 interface Props {
