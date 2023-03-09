@@ -3,21 +3,31 @@ import OrderIcon from '../../../../assets/order_by.png';
 import styled from 'styled-components';
 import { Colors } from '../../../../constants/colors';
 import { BandHTTPResponse } from '../../../../services/model/bandHTTPResponse';
+import useOnclickOutside from 'react-cool-onclickoutside';
+import { useViewController } from './OrderViewController';
 
 interface Props {
   orderFunction: (key: keyof BandHTTPResponse) => void;
+  sortConfigKey: keyof BandHTTPResponse | undefined;
 }
-export const Order = ({ orderFunction }: Props) => {
-  const [buttonsVisible, setButtonsVisible] = useState<Boolean>(false);
-  const toggleVisibility = () => setButtonsVisible((prevState) => !prevState);
+export const Order = ({ orderFunction, sortConfigKey }: Props) => {
+  const { ref, buttonsVisible, toggleVisibility } = useViewController();
   return (
     <Wrapper>
-      <ButtonWrapper>
+      <ButtonWrapper ref={ref}>
         <Icon onClick={toggleVisibility} src={OrderIcon} />
         {buttonsVisible && (
           <ButtonContainer>
-            <Button onClick={() => orderFunction('name')}>Alphabetical</Button>
-            <Button onClick={() => orderFunction('numPlays')}>
+            <Button
+              $active={sortConfigKey === 'name'}
+              onClick={() => orderFunction('name')}
+            >
+              Alphabetical
+            </Button>
+            <Button
+              $active={sortConfigKey === 'numPlays'}
+              onClick={() => orderFunction('numPlays')}
+            >
               Number of Plays
             </Button>
           </ButtonContainer>
@@ -54,13 +64,16 @@ const ButtonContainer = styled.div`
   transform: translate(0, 95%);
   padding: 8px;
 `;
-
-const Button = styled.div`
+interface ButtonProps {
+  $active?: boolean;
+}
+const Button = styled.div<ButtonProps>`
   display: flex;
   height: 25px;
   align-items: center;
   width: 100%;
-  color: ${Colors.white};
+  color: ${(props) => (props.$active ? Colors.orange : Colors.white)};
+  cursor: pointer;
 `;
 
 const ButtonWrapper = styled.div`

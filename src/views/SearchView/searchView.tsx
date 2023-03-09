@@ -18,7 +18,11 @@ import { Order } from './components/order/Order';
 export const SearchView = () => {
   const { bands, isLoading } = useViewController();
 
-  const { items: sortedItems, requestSort } = useSortableData(bands);
+  const {
+    items: sortedItems,
+    requestSort,
+    sortConfig
+  } = useSortableData(bands);
   const {
     items: filteredItems,
     filter,
@@ -56,7 +60,10 @@ export const SearchView = () => {
             </NavBarLayout>
           </NavBar>
           <ListView>
-            <Order orderFunction={requestSort} />
+            <Order
+              orderFunction={requestSort}
+              sortConfigKey={sortConfig?.key}
+            />
             {!!filteredItems.length ? bandList : <NoResults />}
           </ListView>
         </>
