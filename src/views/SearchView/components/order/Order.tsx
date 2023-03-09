@@ -3,7 +3,6 @@ import OrderIcon from '../../../../assets/order_by.png';
 import styled from 'styled-components';
 import { Colors } from '../../../../constants/colors';
 import { BandHTTPResponse } from '../../../../services/model/bandHTTPResponse';
-import useOnclickOutside from 'react-cool-onclickoutside';
 import { useViewController } from './OrderViewController';
 
 interface Props {
